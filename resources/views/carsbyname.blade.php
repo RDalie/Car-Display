@@ -37,5 +37,7 @@
     @endforeach
 
 </div>
-
+<div class="d-flex justify-content-center">
+    <span>{{$cars->appends(request()->input())->links();}}</span>
+</div>
 @endsection

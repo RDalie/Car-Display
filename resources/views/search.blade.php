@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-    <form action="{{route('searchbyname');}}" method="POST">
+    <form action="{{route('searchbyname');}}" method="GET">
         @csrf
     <div class="mb-3 ">
         <label for="search" class="form-label">Car Name</label>

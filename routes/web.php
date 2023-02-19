@@ -28,9 +28,10 @@ Route::get('/update',function(){
 })->name('update');
 
 
-Route::post('/cars/search', [CarController::class, 'search'])->name('searchbyname');
+Route::get('/cars/search', [CarController::class, 'search'])->name('searchbyname');
 Route::post('/cars/update', [CarController::class, 'updatecars'])->name('updatecars');
 
 Route::resource('cars',CarController::class)->only([
     'index', 'create','store'
 ]);
+

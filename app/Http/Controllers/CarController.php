@@ -6,6 +6,7 @@ use Validator;
 use Illuminate\Http\Request;
 use App\Models\Car;
 
+
 class CarController extends Controller
 {
     /**
@@ -15,9 +16,9 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::all();
+        $cars = Car::paginate(2);
 
-        return view('allcars', compact('cars'));
+        return view('allcars', ['cars'=>$cars]);
     }
 
     /**
@@ -42,8 +43,8 @@ class CarController extends Controller
 
         $validator = Validator::make($request->all(), [
             'carName' => 'required',
-            'body' => 'required',
-            'description' => 'required'
+            'carPrice' => 'required',
+            'carDescription' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -72,12 +73,19 @@ class CarController extends Controller
     }
 
     public function search(Request $request) {
+
+
         $name = $request->search;
 
-        $cars = Car::where('carName', $name)->get();
+        
 
-        return view('carsbyname', compact('cars'));
+        $cars = Car::where('carName','Like','%' . $name . '%')->paginate(2);
+        
+
+        return view('carsbyname', ['cars'=>$cars]);
     }
+
+
 
 
     /**

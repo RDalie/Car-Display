@@ -38,4 +38,9 @@
 
 </div>
 
+<div class="d-flex justify-content-center">
+    <span>{{$cars->links();}}</span>
+</div>
+
+
 @endsection
